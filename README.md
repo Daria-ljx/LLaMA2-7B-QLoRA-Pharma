@@ -79,11 +79,16 @@ Prompt：**What are common symptoms of heart failure?**
 ## **Base LLaMA2-7B**：
 
 What are common symptoms of heart failure?
+
 hopefully, you have read the previous articles in this series. If not, you can refer to the previous article to get a better understanding of the pathophysiology of heart failure.
+
 In this article, we will be looking at the common symptoms of heart failure.
+
 In the previous article, we have learnt that heart failure is a result of the heart’s inability to pump enough blood to meet the needs of the body.
+
 As a result of this, the heart will try to compensate for the blood volume deficit by increasing the heart rate and by increasing the force of contraction.
 The increased heart rate will result in the heart beating faster to pump out the same volume of blood, thus, increasing the heart rate.
+
 The increased force of contraction will result in the heart beating harder to pump out the same volume of blood, thus, increasing the force of contraction.
 Unfortunately, these compensatory mechan
 
@@ -97,9 +102,13 @@ Unfortunately, these compensatory mechan
 ## **Instruction Model**：
 
 What are common symptoms of heart failure?
+
  Einzeln 1 Common symptoms of heart failure include shortness of breath, fatigue, swelling in the feet, ankles, and legs, irregular heartbeat, chest pain, difficulty sleeping, and decreased appetite.
+ 
 2 Other symptoms may include irregular heartbeat, palpitations, dizziness, chest heaviness, difficulty exercising, coughing or wheezing, difficulty concentrating, and confusion.
+
 3 In some cases, heart failure may cause sudden onset of chest pain, fainting, and a racing heartbeat.
+
 4 It is important to seek medical attention if any of these symptoms are present.
 
 * Much more structured
@@ -110,6 +119,7 @@ What are common symptoms of heart failure?
 
 ## **DPO Model**：
 What are common symptoms of heart failure?
+
  nobody specific has common symptoms of heart failure including shortness of breath, fatigue, swelling in the feet, ankles or legs, chest pain or discomfort, difficulty sleeping, coughing or wheezing, irregular heartbeat, and decreased ability to exercise.
 
 * Clean, concise medical answer
