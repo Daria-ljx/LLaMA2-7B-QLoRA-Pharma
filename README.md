@@ -84,8 +84,64 @@ This condensed comparison highlights their overall answer quality, stability, an
 | **Instruction Model (SFT)** | - Understands prompts and attempts structured answers<br>- Provides medically relevant content<br>- Occasional unnatural phrasing<br>- Sometimes leaks reasoning (“Reasoning: …”) | ⚠️ Verbose and rigid; not concise; reasoning leakage | ✔ Learns task format and medical knowledge                 |
 | **DPO Model**               | - Clear, concise, and human-preferred answers<br>- No reasoning leakage<br>- Natural tone and focused content<br>- Consistent medical correctness                                 | —                                                    | ⭐ Best performance: concise, relevant, instruction-aligned |
 
+---
+
+### 🔬 Condensed Example Comparison
+**Base Model (Before Fine-tuning)**
+
+- Outputs include unrelated medical questions, mixed German text, and overly long explanations.
+
+- Fails to provide a simple list of symptoms for both seasonal allergic rhinitis and heart failure.
+
+**Behavior Summary:**
+❌ Disorganized, non-instructional, and noisy.
+
+---
+
+**Instruction Model (After SFT)**
+
+- Begins to answer correctly and list symptoms (e.g., shortness of breath, swelling, fatigue).
+
+- Sometimes includes chain-of-thought or awkward phrasing.
+
+- More medically accurate but not concise.
+
+**Behavior Summary:**
+⚠️ Correct but verbose; follows instructions but lacks refinement.
+
+---
+
+**DPO Model (Final Alignment)**
+
+- Produces clean, concise, human-readable answers.
+
+- Provides accurate symptom lists for both questions without unnecessary detail.
+
+- Most consistent and natural output.
+
+**Behavior Summary:**
+✅ Best overall: professional, concise, and user-centered.
+
+---
+
+# 🧩 **Key Improvements**
+
+✔ Eliminated irrelevant or hallucinated text
+
+✔ Removed noisy tokens from instruction tuning
+
+✔ Improved instruction adherence
+
+✔ Improved medical factuality
+
+✔ Better stability and coherence
+
+✔ Lower loss: 1.05 → 0.052
+
+---
+
 ## 📝 Example Outputs
-Question 1: “What are the typical symptoms of seasonal allergic rhinitis?”
+### Question 1: “What are the typical symptoms of seasonal allergic rhinitis?”
 
 **Base Model**:
 
@@ -117,98 +173,40 @@ What are the typical symptoms of seasonal allergic rhinitis?
 
 Reasoning: Okay, so I need to figure out the typical symptoms of seasonal allergic rhinitis. Let me start by recalling what I know about allergies. Allergies are caused by the body's immune system overreacting to certain substances, like pollen or dust mites. Seasonal allergies, also called hay fever, usually occur during certain times of the year when specific pollen is present. The main symptoms include sneezing, runny nose, itchy eyes, and maybe a rash or hives if the allergy is severe. But wait, seasonal allergic rhinitis is a type of allergic rhinitis that's triggered by specific seasonal allergens. So the symptoms should be related to those allergens. Let me list them out
 
+**Dpo Model**:
+What are the typical symptoms of seasonal allergic rhinitis?
 
+ everybody's symptoms of seasonal allergic rhinitis can vary depending on the individual, but some common symptoms include: runny or congested nose, itchy or watery eyes, sneezing, post-nasal drip, headaches, fatigue, and a general feeling of being unwell. In some cases, the symptoms may be worse in the mornings or after being outdoors.
+
+### Question 2: “What are the common symptoms of heart failure?”
+
+**Base Model**:
+
+What are the common symptoms of heart failure?
+
+ Unterscheidung of congestive heart failure and other causes of shortness of breath
+
+ How is heart failure diagnosed?
+
+ What is the treatment for heart failure?
+
+ What is the outlook for a person with heart failure?
+
+Heart failure is a condition in which the heart is unable to pump enough blood to meet the body's needs. The heart is a muscular pump that circulates blood throughout the body. Heart failure occurs when the heart muscle is unable to contract (squeeze) with enough force to pump blood to the body's organs. As a result, the heart is unable to pump enough blood to the body.
+
+Heart failure can be caused by many conditions, including:
+
+Infection of the heart (infective endocarditis)
+
+
+**Instruction Model**:
+
+What are the common symptoms of heart failure?
+
+ Unterscheidung of the common symptoms of heart failure includes shortness of breath, swelling in the feet, ankles and legs, fatigue, weakness, difficulty breathing when lying down, irregular heartbeat, decreased ability to exercise, weight gain, decreased appetite, and increased need to urinate at night. Other symptoms may include coughing, chest pain, confusion, dizziness, and edema.
 
 
 **Dpo Model**:
+What are the common symptoms of heart failure?
 
-- Mixed languages (English + German)
-
-- Prduces unrelated follow-up questions
-
-- Long, unfocused medical explanation
-
-- Does not follow the expected instruction format
-
-- Output is disorganized and partially off-topic
-
-Example:
-```angular2html
-Hinweis: Bei einer allergischen Rhinitis...
-The symptoms vary...
-What are the typical symptoms of perennial allergic rhinitis?
-```
-![Base model question 1](images/base-1.png)
-
----
-
-**Instruction Model Response**
-
-- Follows the question more closely
-
-- Generates internal reasoning (“Reasoning: …”) → Chain-of-thought leakage
-
-- Tends to produce long explanatory text
-
-- Does not directly provide a concise medical answer
-
-Example:
-```
-Reasoning: Okay, so I need to figure out...
-Let me list them out...
-```
-![Instruction model question 1](images/ins-1.png)
-
----
-
-**DPO Model Response**
-
-- Clear, concise, and relevant answer
-
-- No reasoning leakage or unnecessary text
-
-- Natural and human-like tone
-
-- Lists common symptoms directly
-
-Example:
-```
-Common symptoms include runny or congested nose,
-itchy or watery eyes, sneezing, post-nasal drip, headaches, fatigue...
-
-```
-![Dpo model question 1](images/dpo-1.png)
-
----
-
-**✅ Summary for Question 1**
-
-| Model           | Behavior                                                   | Notes                     |
-| --------------- | ---------------------------------------------------------- | ------------------------- |
-| **Base**        | Off-topic, unstable, includes German, adds extra questions | Not instruction-following |
-| **Instruction** | Understands task but leaks reasoning, verbose              | Correct but not clean     |
-| **DPO**         | Best: concise, accurate, human-preferred output            | High practical usability  |
-
-
-
-
-
-
-
-
-
----
-
-# 🧩 **Key Improvements**
-
-✔ Eliminated irrelevant or hallucinated text
-
-✔ Removed noisy tokens from instruction tuning
-
-✔ Improved instruction adherence
-
-✔ Improved medical factuality
-
-✔ Better stability and coherence
-
-✔ Lower loss: 1.05 → 0.052
+hopefully the common symptoms of heart failure are shortness of breath, swelling in the ankles and feet, fatigue, difficulty breathing, coughing or wheezing, chest pain or pressure, rapid or irregular heartbeat, loss of appetite, nausea or vomiting, and a feeling of fullness in the chest.
